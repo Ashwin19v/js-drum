@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drum-pad 🥁</title>
+    <style>
+      body {
+        background-color: rgb(44, 35, 35);
+      }
+      h1 {
+        text-align: center;
+        color: aliceblue;
+      }
+      .buttons {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        row-gap: 10px;
+        align-items: center;
+        place-content: center;
+        margin: auto;
+      }
+      button {
+        height: 100px;
+        width: 100px;
+        border: none;
+        border-radius: 3px;
+        font-size: 2rem;
+        color: white;
+      }
+      .class1,
+      .class2,
+      .class3 {
+        background: linear-gradient(
+          90deg,
+          rgb(139, 30, 124),
+          rgb(208, 29, 148)
+        );
+      }
+      .class4,
+      .class5,
+      .class6 {
+        background-color: rgb(58, 226, 58);
+      }
+      .class7,
+      .class8,
+      .class9 {
+        background-color: rgb(240, 240, 40);
+      }
+      @media (max-width: 768px) {
+        .buttons {
+          width: 10%;
+          grid-template-columns: repeat(3, 1fr);
+        }
+        button {
+          height: 120px;
+          width: 120px;
+          font-size: 1.5rem;
+        }
+      }
+      @media (max-width: 480px) {
+        .buttons {
+          width: 10%;
+          grid-template-columns: repeat(3, 1fr);
+        }
+        button {
+          height: 100px;
+          width: 100px;
+          font-size: 1.2rem;
+        }
+      }
+      @media (min-width: 769px) {
+        .buttons {
+          width: 300px;
+        }
+        button {
+          height: 150px;
+          width: 150px;
+          font-size: 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Drum-pad 🥁</h1>
+    <div class="buttons">
+      <button class="class7" data-key="7">7</button>
+      <button class="class8" data-key="8">8</button>
+      <button class="class9" data-key="9">9</button>
+      <button class="class4" data-key="4">4</button>
+      <button class="class5" data-key="5">5</button>
+      <button class="class6" data-key="6">6</button>
+      <button class="class1" data-key="1">1</button>
+      <button class="class2" data-key="2">2</button>
+      <button class="class3" data-key="3">3</button>
+    </div>
+
+    <script>
+      function sound(key) {
+        let audio;
+        switch (key) {
+          case "1":
+            audio = new Audio("1.wav");
+            break;
+          case "2":
+            audio = new Audio("2.wav");
+            break;
+          case "3":
+            audio = new Audio("3.wav");
+            break;
+          case "4":
+            audio = new Audio("4.mp3");
+            break;
+          case "5":
+            audio = new Audio("5.wav");
+            break;
+          case "6":
+            audio = new Audio("6.wav");
+            break;
+          case "7":
+            audio = new Audio("7.wav");
+            break;
+          case "8":
+            audio = new Audio("8.wav");
+            break;
+          case "9":
+            audio = new Audio("9.wav");
+            break;
+          default:
+            console.log(key);
+            return;
+        }
+        audio.play();
+      }
+
+      document.addEventListener("keyup", function (event) {
+        sound(event.key);
+      });
+
+      document.querySelectorAll("button").forEach((button) => {
+        button.addEventListener("click", function () {
+          const key = this.getAttribute("data-key");
+          sound(key);
+        });
+      });
+    </script>
+  </body>
+</html>
